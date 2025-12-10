@@ -1,5 +1,5 @@
 import CheckboxInput from '@/components/checkbox-input.vue';
-import { StringCollection } from '@/util/collections';
+import { Collection } from '@/util/collections';
 import { testFocus } from '@test/focus';
 import { mountComponent } from '@test/util/mount';
 import { DOMWrapper, mount } from '@vue/test-utils';
@@ -179,7 +179,7 @@ describe('Validating model value', () => {
             });
 
             const validation = wrapper.vm.validate();
-            expect(validation).toEqual({ valid: false, failed: [] });
+            expect(validation).toEqual({ valid: false, failed: ['required'] });
         });
     });
 
@@ -204,22 +204,11 @@ describe('Validating model value', () => {
             });
 
             const validation = wrapper.vm.validate();
-            expect(validation).toEqual({ valid: false, failed: [] });
-        });
-
-        it('should invalidate the model value', async () => {
-            const { wrapper } = mountCheckboxInput({
-                modelValue: [],
-                value: null,
-                validators: 'required'
-            });
-
-            const validation = wrapper.vm.validate();
-            expect(validation).toEqual({ valid: false, failed: [] });
+            expect(validation).toEqual({ valid: false, failed: ['required'] });
         });
     });
 
-    it('should give a warning when the model value is unset', async () => {
+    it('should give a warning when the model value is null', async () => {
         const warnSpy = vi.spyOn(console, 'warn').mockImplementation(vi.fn());
 
         const { wrapper } = mountCheckboxInput({
@@ -232,9 +221,22 @@ describe('Validating model value', () => {
         expect(warnSpy).toHaveBeenCalledOnce();
         expect(warnSpy).toHaveBeenCalledWith('Could not validate checkbox-item.', 'There is no model value.');
     });
+
+    it('should give a warning when the model value is empty', async () => {
+        const { wrapper } = mountCheckboxInput({
+            modelValue: [],
+            value: null,
+            validators: 'required'
+        });
+
+        const validation = wrapper.vm.validate();
+        expect(validation).toEqual({ valid: true, failed: [] });
+        expect(warnSpy).toHaveBeenCalledOnce();
+        expect(warnSpy).toHaveBeenCalledWith('Could not validate checkbox-item.', 'There is no value to validate.');
+    });
 });
 
-type CheckboxValues = boolean | StringCollection;
+type CheckboxValues = Collection<string> | boolean;
 
 function mountCheckboxInput(customProps: Record<string, unknown> = {}) {
     const testModel = ref<CheckboxValues>(customProps.modelValue as CheckboxValues);

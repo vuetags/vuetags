@@ -8,7 +8,8 @@ import { useFocusable } from '@/composables/focus';
 import { toArray } from '@/util/arrays';
 import type { ValidationFunction, ValidationPresets } from '@/util/validation';
 import { replaceRequiredPreset, validate } from '@/util/validation';
-import { computed, InputHTMLAttributes, useTemplateRef } from 'vue';
+import type { InputHTMLAttributes } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 
 type ValidatableProp = { validators?: MaybeArray<ValidationPresets | ValidationFunction<File[]>> };
 

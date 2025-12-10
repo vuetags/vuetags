@@ -1,12 +1,23 @@
 import type { Filter, Modifier } from '@/util/model';
 
 /**
+ * Properties for filter functionality
+ */
+export type FilterableInputProp = {
+    filters?: MaybeArray<Filter>;
+};
+
+/**
+ * Properties for modify functionality
+ */
+export type ModifiableInputProp = {
+    modifiers?: MaybeArray<Modifier>;
+};
+
+/**
  * Properties for the text-input and text-area inputs
  */
-export type TransformableInputProps = {
-    filters?: Filter | Filter[];
-    modifiers?: Modifier | Modifier[];
-};
+export type TransformableInputProps = FilterableInputProp & ModifiableInputProp;
 
 /**
  * Focus emits

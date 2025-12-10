@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { add, has, remove } from './collections';
 
-describe('Adding to collections', () => {
+describe('Adding to string collections', () => {
     describe('Arrays', () => {
         it('should add values', async () => {
             expect(add('foo', [])).toEqual(['foo']);
@@ -17,9 +17,7 @@ describe('Adding to collections', () => {
 
         it('should not add incorrect values', async () => {
             expect(add('', ['foo'])).toEqual(['foo']);
-            // @ts-expect-error Value is not allowed
             expect(add(null, ['foo'])).toEqual(['foo']);
-            // @ts-expect-error Value is not allowed
             expect(add(undefined, ['foo'])).toEqual(['foo']);
         });
     });
@@ -39,15 +37,13 @@ describe('Adding to collections', () => {
 
         it('should not add incorrect values', async () => {
             expect(add('', new Set(['foo']))).toEqual(new Set(['foo']));
-            // @ts-expect-error Value is not allowed
             expect(add(null, new Set(['foo']))).toEqual(new Set(['foo']));
-            // @ts-expect-error Value is not allowed
             expect(add(undefined, new Set(['foo']))).toEqual(new Set(['foo']));
         });
     });
 });
 
-describe('Removing from collections', () => {
+describe('Removing from string collections', () => {
     describe('Arrays', () => {
         it('should remove values', async () => {
             expect(remove('foo', ['foo'])).toEqual([]);
@@ -62,9 +58,7 @@ describe('Removing from collections', () => {
 
         it('should not remove incorrect values', async () => {
             expect(remove('', ['foo'])).toEqual(['foo']);
-            // @ts-expect-error Value is not allowed
             expect(remove(null, ['foo'])).toEqual(['foo']);
-            // @ts-expect-error Value is not allowed
             expect(remove(undefined, ['foo'])).toEqual(['foo']);
         });
     });
@@ -83,15 +77,13 @@ describe('Removing from collections', () => {
 
         it('should not remove incorrect values', async () => {
             expect(remove('', new Set(['foo']))).toEqual(new Set(['foo']));
-            // @ts-expect-error Value is not allowed
             expect(remove(null, new Set(['foo']))).toEqual(new Set(['foo']));
-            // @ts-expect-error Value is not allowed
             expect(remove(undefined, new Set(['foo']))).toEqual(new Set(['foo']));
         });
     });
 });
 
-describe('Checking if collections contain values', () => {
+describe('Checking if string collections contain values', () => {
     describe('Arrays', () => {
         it('should find values', async () => {
             expect(has('foo', ['foo'])).toBe(true);

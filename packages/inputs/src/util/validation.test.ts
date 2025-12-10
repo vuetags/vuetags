@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { has, StringCollection } from './collections';
+import { Collection, has } from './collections';
 import { replaceRequiredPreset, validate } from './validation';
 
 const validResponse = { valid: true, failed: [] };
@@ -109,7 +109,7 @@ describe('Validating file values', () => {
 });
 
 describe('Validating checkbox values', () => {
-    const requiredValidation = (modelValue: boolean | StringCollection) => {
+    const requiredValidation = (modelValue: boolean | Collection<string>) => {
         if (modelValue === undefined || typeof modelValue === 'boolean') {
             return !!modelValue;
         }
@@ -117,7 +117,7 @@ describe('Validating checkbox values', () => {
         return has('test', modelValue);
     };
 
-    const specificValueValidation = (modelValue: boolean | StringCollection) => {
+    const specificValueValidation = (modelValue: boolean | Collection<string>) => {
         if (modelValue === undefined || typeof modelValue === 'boolean') {
             return !!modelValue ? true : 'Wrong value';
         }

@@ -4,16 +4,28 @@
 
 <script setup lang="ts">
 import TextInput from '@/components/text-input.vue';
-import type { MaybeArray, TransformableInputProps } from '@/components/types';
-import { filterPresets, Modifier, type Filter } from '@/util/model';
-import { ValidationFunction, ValidationPresets } from '@/util/validation';
-import { computed, InputHTMLAttributes, useTemplateRef } from 'vue';
+import type { MaybeArray } from '@/components/types';
+import type { TransformFunction } from '@/util/model';
+import { filterPresets } from '@/util/model';
+import type { ValidationFunction, ValidationPresets } from '@/util/validation';
+import type { InputHTMLAttributes } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 
+/* Custom prop for validators */
 type ValidatableProp = { validators?: MaybeArray<ValidationPresets | ValidationFunction> };
 
+/* Custom prop for filters without presets */
+type FilterableProp = { filters?: MaybeArray<RegExp | TransformFunction> };
+
+/* Custom prop for modifiers without presets */
+type ModifiableProp = { modifiers?: MaybeArray<TransformFunction> };
+
 type Props = Omit</* @vue-ignore */ InputHTMLAttributes, 'type'> &
-    TransformableInputProps &
+    FilterableProp &
+    ModifiableProp &
     ValidatableProp & { allowedCharacters?: string };
+
+type Filter = RegExp | TransformFunction;
 
 const { filters = [], modifiers = [], allowedCharacters = '' } = defineProps<Props>();
 
@@ -23,7 +35,7 @@ const adjustedFilters = computed<Filter[]>(() =>
     [new RegExp(`[0-9${allowedCharacters}]`, 'g'), filterPresets<Filter>(filters)].flat()
 );
 
-const adjustedModifiers = computed<Modifier[]>(() => filterPresets<Modifier>(modifiers).flat());
+const adjustedModifiers = computed<TransformFunction[]>(() => filterPresets<TransformFunction>(modifiers).flat());
 
 defineExpose({
     focus: () => element.value?.focus(),

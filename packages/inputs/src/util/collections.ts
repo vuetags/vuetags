@@ -1,4 +1,4 @@
-export type StringCollection = Set<string> | string[];
+export type Collection<T> = Set<T> | T[];
 
 /**
  * Add a value to the Array or Set without creating duplicate entries.
@@ -6,7 +6,7 @@ export type StringCollection = Set<string> | string[];
  * @param value The value to add.
  * @param collection The Array or Set to add the value to.
  */
-export function add(value: string, collection: StringCollection): StringCollection {
+export function add<T>(value: T, collection: Collection<T>): Collection<T> {
     if (Array.isArray(collection)) {
         if (value && !collection.includes(value)) {
             collection.push(value);
@@ -27,7 +27,7 @@ export function add(value: string, collection: StringCollection): StringCollecti
  * @param value The value to add.
  * @param collection The Array or Set to add the value to.
  */
-export function remove(value: string, collection: StringCollection): StringCollection {
+export function remove<T>(value: T, collection: Collection<T>): Collection<T> {
     if (Array.isArray(collection)) {
         const index = collection.indexOf(value);
         if (index !== -1) {
@@ -49,7 +49,7 @@ export function remove(value: string, collection: StringCollection): StringColle
  * @param value The value to find.
  * @param collection The Array or Set to find the value in.
  */
-export function has(value: string, collection: StringCollection): boolean {
+export function has<T>(value: T, collection: Collection<T>): boolean {
     if (Array.isArray(collection)) {
         return collection.includes(value);
     }

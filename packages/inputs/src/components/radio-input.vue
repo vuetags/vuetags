@@ -11,11 +11,13 @@
 </template>
 
 <script lang="ts" setup>
+import type { FocusableEmits, MaybeArray, ValidationResult } from '@/components/types';
 import { useFocusable } from '@/composables/focus';
 import { toArray } from '@/util/arrays';
-import { replaceRequiredPreset, validate, ValidationFunction, ValidationPresets } from '@/util/validation';
-import { computed, InputHTMLAttributes, useTemplateRef } from 'vue';
-import type { FocusableEmits, MaybeArray, ValidationResult } from './types';
+import type { ValidationFunction, ValidationPresets } from '@/util/validation';
+import { replaceRequiredPreset, validate } from '@/util/validation';
+import type { InputHTMLAttributes } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 
 type RadioValidationFunction = ValidationFunction<string | unknown>;
 type ValidatableProp = { validators?: MaybeArray<ValidationPresets | RadioValidationFunction> };

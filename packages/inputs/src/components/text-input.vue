@@ -22,7 +22,8 @@ import { createFilters, createModifiers, ModifierPresets, transform } from '@/ut
 import type { ValidationFunction, ValidationPresets } from '@/util/validation';
 import { replaceRequiredPreset, validate } from '@/util/validation';
 import { useDebounceFn } from '@vueuse/core';
-import { computed, InputHTMLAttributes, onBeforeMount, TextareaHTMLAttributes, useTemplateRef } from 'vue';
+import type { InputHTMLAttributes, TextareaHTMLAttributes } from 'vue';
+import { computed, onBeforeMount, useTemplateRef } from 'vue';
 
 type TextInputProps = /* @vue-ignore */ InputHTMLAttributes;
 type TextAreaProps = /* @vue-ignore */ TextareaHTMLAttributes;

@@ -14,15 +14,17 @@
 import type { FocusableEmits, MaybeArray, ValidationResult } from '@/components/types';
 import { useFocusable } from '@/composables/focus';
 import { toArray } from '@/util/arrays';
-import type { StringCollection } from '@/util/collections';
-import { add as addToCollection, has, remove as removeFromCollection } from '@/util/collections';
-import { replaceRequiredPreset, validate, ValidationFunction, ValidationPresets } from '@/util/validation';
-import { computed, InputHTMLAttributes, useTemplateRef } from 'vue';
+import type { Collection } from '@/util/collections';
+import { add as addToCollection, has as hasInCollection, remove as removeFromCollection } from '@/util/collections';
+import type { ValidationFunction, ValidationPresets } from '@/util/validation';
+import { replaceRequiredPreset, validate } from '@/util/validation';
+import type { InputHTMLAttributes } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 
 /**
  * Checkbox model
  */
-export type CheckboxModel = StringCollection | boolean;
+export type CheckboxModel = Collection<string> | boolean;
 
 type ValidatableProp = { validators?: MaybeArray<ValidationPresets | ValidationFunction<CheckboxModel>> };
 
@@ -44,17 +46,17 @@ const { focused, onBlur, onFocus } = useFocusable(emit);
 /**
  * Validator function for 'required' preset.
  */
-const required: ValidationFunction<CheckboxModel> = (modelValue: CheckboxModel): boolean => {
+const required: ValidationFunction<CheckboxModel> = (modelValue: CheckboxModel): boolean | 'required' => {
     if (modelValue === undefined || typeof modelValue === 'boolean') {
-        return !!modelValue;
+        return !!modelValue || 'required';
     }
 
     if (!value) {
         console.warn('Could not validate checkbox-item.', 'There is no value to validate.');
-        return false;
+        return true;
     }
 
-    return has(value, modelValue);
+    return hasInCollection<string>(value, modelValue) || 'required';
 };
 
 /**
@@ -90,7 +92,7 @@ function check(): void {
         return;
     }
 
-    model.value = addToCollection(value as string, model.value as StringCollection);
+    model.value = addToCollection<string>(value, model.value as Collection<string>);
 }
 
 /**
@@ -107,7 +109,7 @@ function uncheck(): void {
         return;
     }
 
-    model.value = removeFromCollection(value as string, model.value as StringCollection);
+    model.value = removeFromCollection<string>(value, model.value as Collection<string>);
 }
 
 /**
