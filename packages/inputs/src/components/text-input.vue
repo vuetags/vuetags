@@ -117,7 +117,7 @@ const onPaste = (event: ClipboardEvent): void => {
 /**
  * Composable for all inputs that have a "focused" state and corresponding emits.
  */
-const { focused, onBlur, onFocus } = useFocusable(emit);
+const { focused, focus, blur, onBlur, onFocus } = useFocusable(element, emit);
 
 /**
  * Remove the "focused" class and emit the blur event when blurred.
@@ -149,8 +149,8 @@ onBeforeMount(() => {
  * Expose the focus and blur methods so they can be used directly via template references.
  */
 defineExpose({
-    focus: () => element.value?.focus(),
-    blur: () => element.value?.blur(),
+    focus,
+    blur,
     validate: validateModel
 });
 </script>

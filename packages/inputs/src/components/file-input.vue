@@ -32,8 +32,7 @@ const element = useTemplateRef<HTMLInputElement>('element');
 /**
  * Composable for all inputs that have a "focused" state and corresponding emits.
  */
-const { focused, onBlur, onFocus } = useFocusable(emit);
-
+const { focused, focus, blur, onBlur, onFocus } = useFocusable(element, emit);
 /**
  * When files are selected, get the filelist and convert it to an array for easier use.
  *
@@ -92,8 +91,8 @@ function clear() {
  * Expose the focus and blur methods so they can be used directly via template references.
  */
 defineExpose({
-    focus: () => element.value?.focus(),
-    blur: () => element.value?.blur(),
+    focus,
+    blur,
     select,
     clear,
     validate: validateModel

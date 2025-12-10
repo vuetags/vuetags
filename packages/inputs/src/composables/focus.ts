@@ -1,9 +1,23 @@
-import { readonly, ref } from 'vue';
+import { readonly, ref, ShallowRef } from 'vue';
 
 type FocusableEmits = ((name: 'focus', event: FocusEvent) => void) & ((name: 'blur', event: FocusEvent) => void);
 
-export const useFocusable = (emit: FocusableEmits) => {
+export const useFocusable = <T extends HTMLElement>(element: Readonly<ShallowRef<T | null>>, emit: FocusableEmits) => {
     const focused = ref<boolean>();
+
+    /**
+     * Trigger the HTML native "focus" function
+     */
+    function focus(): void {
+        element.value?.focus();
+    }
+
+    /**
+     * Trigger the HTML native "blur" function
+     */
+    function blur(): void {
+        element.value?.blur();
+    }
 
     /**
      * Trigger the "focused" class and emit the focus event when focused.
@@ -27,6 +41,8 @@ export const useFocusable = (emit: FocusableEmits) => {
 
     return {
         focused: readonly(focused),
+        focus,
+        blur,
         onFocus,
         onBlur
     };
