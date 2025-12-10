@@ -27,7 +27,7 @@ The value property is used to distinguish multiple combined checkboxes. This val
 import { CheckboxInput } from '@vuetags/inputs'; // [!code focus]
 import { computed } from 'vue';
 
-const dynamicValue = computed<string>(() => 'some value'); // [!code focus]
+const dynamicValue = computed<string>(() => 'second'); // [!code focus]
 </script>
 
 <template>
@@ -45,7 +45,7 @@ const dynamicValue = computed<string>(() => 'some value'); // [!code focus]
 import { CheckboxInput } from '@vuetags/inputs'; // [!code focus]
 import { computed } from 'vue';
 
-const dynamicValue = computed(() => 'some value'); // [!code focus]
+const dynamicValue = computed(() => 'second'); // [!code focus]
 </script>
 
 <template>
@@ -62,8 +62,10 @@ const dynamicValue = computed(() => 'some value'); // [!code focus]
 
 ### `validators`
 
-Validators are used to validate the user's input. Validation can be triggered manually by using the [validate](#validate) function.
-These are either a single validator or an array of multiple validators. These can be predefined presets or custom functions.
+Validators are used to validate the user's input. Validation is triggered manually by using the [validate](#validate) function.
+These are either a single validator or an array of multiple validators. These can be predefined presets and/or custom functions.
+
+<!--@include: @/parts/types/validation-function.md-->
 
 #### A single validator
 
@@ -143,7 +145,11 @@ const validatorFunction = (value) => value.length > 1;
 
 :::
 
-<!--@include: @/parts/types/validation-function.md-->
+#### Available presets
+
+`required`
+
+The required preset checks if the checkbox is checked. If the checkbox is not checked, it will return `'required'` in the validation result.
 
 ## Emits
 
@@ -373,6 +379,8 @@ function uncheck() {
 
 Programmatically trigger validation of the current value. Runs all the provided validators in order in which they are provided and returns the results.
 
+<!--@include: @/parts/types/validation-result.md-->
+
 ::: code-group
 
 ```vue [Typescript]
@@ -444,5 +452,3 @@ function validate() {
 ```
 
 :::
-
-<!--@include: @/parts/types/validation-result.md-->

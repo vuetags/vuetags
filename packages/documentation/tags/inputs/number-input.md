@@ -14,9 +14,11 @@ The `NumberInput` element allows all default HTML properties and attributes. Apa
 
 ### `filters`
 
-Filters can be used to filter out characters on input. This prevents characters from being added when typing, when pasting and when providing an initial value. These are either a single filter or an array of multiple filters. They can be regular expressions or custom functions.
+Filters can be used to filter out characters on input. This prevents characters from being added when typing, when pasting and when providing an initial value. These are either a single filter or an array of multiple filters. They can be regular expressions and/or custom functions.
 
 When you use multiple filters, they are executed in order in which they are provided.
+
+<!--@include: @/parts/types/filter-function-without-presets.md-->
 
 ### A single filter
 
@@ -102,13 +104,13 @@ const filter = (value) => (value.match(/[^5]/g) || []).join('');
 
 :::
 
-<!--@include: @/parts/types/filter-function-without-presets.md-->
-
 ### `modifiers`
 
-Modifiers can be used to modify values on input. This modifies the value when typing, when pasting and when providing an initial value. These are either a single filter or an array of multiple modifiers. They can be regular expressions or custom functions.
+Modifiers can be used to modify values on input. This modifies the value when typing, when pasting and when providing an initial value. These are either a single filter or an array of multiple modifiers. They can be regular expressions and/or custom functions.
 
 When you use multiple modifiers, they are executed in order in which they are provided.
+
+<!--@include: @/parts/types/modifier-function-without-presets.md-->
 
 ### A single modifier
 
@@ -190,12 +192,12 @@ const increase = (value) => (Number(value) + 1)?.toString();
 
 :::
 
-<!--@include: @/parts/types/modifier-function-without-presets.md-->
-
 ### `validators`
 
-Validators are used to validate the user's input. Validation can be triggered manually by using the [validate](#validate) function.
-These are either a single validator or an array of multiple validators. These can be predefined presets or custom functions.
+Validators are used to validate the user's input. Validation is triggered manually by using the [validate](#validate) function.
+These are either a single validator or an array of multiple validators. These can be predefined presets and/or custom functions.
+
+<!--@include: @/parts/types/validation-function.md-->
 
 #### A single validator
 
@@ -275,7 +277,11 @@ const validatorFunction = (value) => value?.length > 5;
 
 :::
 
-<!--@include: @/parts/types/validation-function.md-->
+#### Available presets
+
+`required`
+
+The required preset checks if the checkbox is checked. If the checkbox is not checked, it will return `'required'` in the validation result.
 
 ## Emits
 
@@ -397,6 +403,8 @@ function blur() {
 
 Programmatically trigger validation of the current value. Runs all the provided validators in order in which they are provided and returns the results.
 
+<!--@include: @/parts/types/validation-result.md-->
+
 ::: code-group
 
 ```vue [Typescript]
@@ -466,5 +474,3 @@ function validate() {
 ```
 
 :::
-
-<!--@include: @/parts/types/validation-result.md-->

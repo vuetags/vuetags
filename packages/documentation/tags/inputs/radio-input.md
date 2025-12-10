@@ -69,8 +69,10 @@ This example is only to showcase the different types of values.
 
 ### `validators`
 
-Validators are used to validate the user's input. Validation can be triggered manually by using the [validate](#validate) function.
-These are either a single validator or an array of multiple validators. These can be predefined presets or custom functions.
+Validators are used to validate the user's input. Validation is triggered manually by using the [validate](#validate) function.
+These are either a single validator or an array of multiple validators. These can be predefined presets and/or custom functions.
+
+<!--@include: @/parts/types/validation-function.md-->
 
 #### A single validator
 
@@ -150,7 +152,11 @@ const validatorFunction = (value) => value === 'first';
 
 :::
 
-<!--@include: @/parts/types/validation-function.md-->
+#### Available presets
+
+`required`
+
+The required preset checks if the checkbox is checked. If the checkbox is not checked, it will return `'required'` in the validation result.
 
 ## Emits
 

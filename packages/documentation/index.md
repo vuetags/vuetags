@@ -4,8 +4,8 @@ layout: home
 
 hero:
     name: VueTags
-    text: Like HTML elements, but better
-    tagline: Simple, Type Safe and Extensible. The feel of using native HTML elements but with more functionality.
+    text: Like HTML tags, but better
+    tagline: Simple, Type Safe and Extensible. The feel of using native HTML tags but with more functionality.
     actions:
         - theme: brand
           text: Get started
@@ -20,7 +20,7 @@ hero:
 features:
     - icon: 💡
       title: Simple
-      details: Exactly like using native HTML elements, with more functionality added to them.
+      details: Exactly like using native HTML elements, with more functionality.
     - icon: 🔑
       title: Type Safe
       details: Fully typed, including native element typing. So you'll have all the auto-completion.
@@ -36,5 +36,5 @@ features:
       details: We provide no styling so you can make it your own.
     - icon: 🪶
       title: Lightweight
-      details: Each package is less than 10kb (minified), so it won't weigh you down.
+      details: Each package is less than 20kb, so it won't weigh you down.
 ---

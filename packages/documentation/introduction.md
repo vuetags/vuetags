@@ -7,7 +7,7 @@ VueTags is a component library for Vue. It adds functionality to HTML elements w
 
 ## Why should I use VueTags?
 
-If you're tired of adding the same functionality to HTML elements, if you use UI libraries for additional functionality but don't want to be forced to use their styling, this is the library for you. It is a low-level library created to reduce the amount of (repetitive) work that you do on most projects.
+If you're tired of adding the same functionality to HTML elements or if you use UI libraries for their functionality but don't want to be forced to use their styling, this is the library for you. It is a low-level library created to reduce the amount of (repetitive) work that you do on most projects.
 
 ## What does VueTags do?
 
@@ -15,6 +15,6 @@ VueTags provides extensions of native HTML elements. What this means is that you
 
 ### What do VueTags provide?
 
-The main difference that VueTags provide is additional functions on top of the native HTML elements. For example; the `text-input` has additional attributes where you can provide filters (that filter out specific characters during input), modifiers (that transform your input) and validators (that validate your value). Additionally it provides functions that can programmatically triggered to perform actions such as focusing the element and triggering the validation.
+The main difference that VueTags provide is additional functionalities on top of the native HTML elements. For example; the `text-input` has additional attributes where you can provide filters (that filter out specific characters during input), modifiers (that transform your input) and validators (that validate the user's input). Additionally it provides functions that can programmatically triggered to perform actions such as focusing the element and triggering the validation.
 
 To find out what each component provides; check them out under the [Tags](/tags) page.

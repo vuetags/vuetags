@@ -9,7 +9,7 @@
 You can use the `v-model` as you're used to in Vue. Check the [official documentation](https://vuejs.org/api/built-in-directives.html#v-model) for more information on how to use models.
 
 ::: warning
-Note that the HTML file input does not allow setting files programmatically. So if you set the model from the parent, the input element will not show that files are selected. The component will contain the set files though.
+Note that the HTML file input does not allow setting files programmatically. So if you set the model from the parent, the input element will not show that files are selected. The model will have the files selected though.
 :::
 
 ## Props
@@ -18,8 +18,10 @@ The `FileInput` element allows all default HTML properties and attributes. Apart
 
 ### `validators`
 
-Validators are used to validate the user's input. Validation can be triggered manually by using the [validate](#validate) function.
-These are either a single validator or an array of multiple validators. These can be predefined presets or custom functions.
+Validators are used to validate the user's input. Validation is triggered manually by using the [validate](#validate) function.
+These are either a single validator or an array of multiple validators. These can be predefined presets and/or custom functions.
+
+<!--@include: @/parts/types/validation-function.md-->
 
 #### A single validator
 
@@ -99,7 +101,11 @@ const validatorFunction = (value) => value.length > 3;
 
 :::
 
-<!--@include: @/parts/types/validation-function.md-->
+#### Available presets
+
+`required`
+
+The required preset checks if the checkbox is checked. If the checkbox is not checked, it will return `'required'` in the validation result.
 
 ## Emits
 
@@ -329,6 +335,8 @@ function clear() {
 
 Programmatically trigger validation of the current value. Runs all the provided validators in order in which they are provided and returns the results.
 
+<!--@include: @/parts/types/validation-result.md-->
+
 ::: code-group
 
 ```vue [Typescript]
@@ -399,5 +407,3 @@ function validate() {
 ```
 
 :::
-
-<!--@include: @/parts/types/validation-result.md-->
