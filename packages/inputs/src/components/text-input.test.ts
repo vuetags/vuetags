@@ -63,23 +63,23 @@ describe('Updating model value', () => {
             // Filter out letters
             await wrapper.setProps({ filters: 'letters' });
             await input.setValue('updated 12345');
-            expect(testModel.value).toBe(' 12345');
+            expect(testModel.value).toBe('updated');
 
-            await input.setValue('updated');
+            await input.setValue('12345');
             expect(testModel.value).toBe('');
 
             // Filter out numbers
             await wrapper.setProps({ filters: 'numbers' });
             await input.setValue('updated 12345');
-            expect(testModel.value).toBe('updated ');
+            expect(testModel.value).toBe('12345');
 
-            await input.setValue('12345');
+            await input.setValue('updated');
             expect(testModel.value).toBe('');
 
-            // Filter out numbers and then letters
+            // Filter out numbers and then letters, which results in nothing
             await wrapper.setProps({ filters: ['numbers', 'letters'] });
             await input.setValue('$updated-12345_');
-            expect(testModel.value).toBe('$-_');
+            expect(testModel.value).toBe('');
 
             // Once for the inital value and thrice for the updates to the filters
             expect(createFiltersSpy).toHaveBeenCalledTimes(4);

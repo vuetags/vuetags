@@ -8,8 +8,8 @@ export const FilterPresets = ['letters', 'numbers'] as const;
 export type FilterPreset = (typeof FilterPresets)[number];
 
 const FilterPresetFunctions: Record<FilterPreset, TransformFunction> = {
-    letters: (value: string) => (value.match(/[^A-Za-z]/g) || []).join(''),
-    numbers: (value: string) => (value.match(/[^0-9]/g) || []).join('')
+    letters: (value: string) => (value.match(/[A-Za-z]/g) || []).join(''),
+    numbers: (value: string) => (value.match(/[0-9]/g) || []).join('')
 };
 
 export const ModifierPresets = ['uppercase', 'lowercase'] as const;
