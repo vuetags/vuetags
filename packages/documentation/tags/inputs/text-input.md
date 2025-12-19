@@ -96,6 +96,8 @@ Filters can be used to filter out characters on input. This prevents characters 
 
 When you use multiple filters, they are executed in order in which they are provided.
 
+<!--@include: @/parts/types/filter-function.md-->
+
 ### A single filter
 
 A single filter can be directly added to the prop. This can be done directly in the template or as a variable.
@@ -188,13 +190,13 @@ const filter = (value) => (value.match(/[^A-Za-z]/g) || []).join('');
 
 :::
 
-<!--@include: @/parts/types/filter-function.md-->
-
 ### `modifiers`
 
 Modifiers can be used to modify values on input. This modifies the value when typing, when pasting and when providing an initial value. These are either a single filter or an array of multiple modifiers. They can be predefined presets, regular expressions and/or custom functions.
 
 When you use multiple modifiers, they are executed in order in which they are provided.
+
+<!--@include: @/parts/types/modifier-function.md-->
 
 ### A single modifier
 
@@ -279,8 +281,6 @@ const modifier = (value) => value.toUpperCase();
 ```
 
 :::
-
-<!--@include: @/parts/types/modifier-function.md-->
 
 ### `validators`
 

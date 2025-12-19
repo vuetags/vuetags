@@ -8,7 +8,7 @@ const model = ref<File[]>([]);
 <p class="example-container">
     <file-input v-model="model" class="example-element" multiple />
     <span class="model-value">
-        Model Value (file names):
+        Model Value (showing file names):
         <ul>
             <li v-for="file of model">{{ file.name }}</li>
         </ul>
@@ -65,7 +65,7 @@ const model = ref<File[]>([]); // [!code focus]
         <!-- [!code focus] -->
         <file-input v-model="model" multiple />
         <!-- [!code focus] -->
-        Model Value (file names):
+        Model Value (showing file names):
         <ul>
             <!-- [!code focus] -->
             <li v-for="file of model">{{ file.name }}</li>
@@ -87,7 +87,7 @@ const model = ref([]); // [!code focus]
         <!-- [!code focus] -->
         <file-input v-model="model" multiple />
         <!-- [!code focus] -->
-        Model Value (file names):
+        Model Value (showing file names):
         <ul>
             <!-- [!code focus] -->
             <li v-for="file of model">{{ file.name }}</li>
