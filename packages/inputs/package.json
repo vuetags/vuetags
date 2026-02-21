@@ -6,9 +6,13 @@
         "name": "Michael Verschoof",
         "email": "michael.verschoof@gmail.com"
     },
+    "homepage": "https://vuetags.dev",
     "repository": {
         "type": "git",
-        "url": "https://github.com/vuetags/vuetags.git"
+        "url": "git+https://github.com/vuetags/vuetags.git"
+    },
+    "bugs": {
+        "url": "https://github.com/vuetags/vuetags/issues"
     },
     "keywords": [
         "vue",
@@ -29,7 +33,11 @@
         "LICENSE",
         "README.md"
     ],
+    "directories": {
+        "test": "test"
+    },
     "types": "./dist/types/index.d.ts",
+    "main": "./dist/index.js",
     "module": "./dist/index.js",
     "exports": {
         ".": {
