@@ -4,7 +4,7 @@
 
 ## Documentation
 
-For information on usage and configuration, see the [documentation](https://github.com/vuetags/vuetags).
+For information on usage and configuration, see [the documentation](https://vuetags.dev).
 
 ## License
 

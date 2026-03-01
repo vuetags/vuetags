@@ -28,7 +28,7 @@ export type CheckboxModel = Collection<string> | boolean;
 
 type ValidatableProp = { validators?: MaybeArray<ValidationPresets | ValidationFunction<CheckboxModel>> };
 
-type Props = Omit</* @vue-ignore */ InputHTMLAttributes, 'type'> & ValidatableProp & { value?: string };
+type Props = Omit</* @vue-ignore */ InputHTMLAttributes, 'type' | 'value'> & ValidatableProp & { value?: string };
 
 const { value, validators = [] } = defineProps<Props>();
 

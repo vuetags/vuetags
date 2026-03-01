@@ -1,3 +1,6 @@
+import { MaybeArray } from '@/components/types';
+import { toArray } from '@/util/arrays';
+
 export type TransformFunction = (value: string) => string;
 
 export type Filter = FilterPreset | RegExp | TransformFunction;
@@ -26,12 +29,12 @@ const ModifierPresetFunctions: Record<ModifierPreset, TransformFunction> = {
  * @param filters one or multiple presets, regular expressions or functions
  * @returns an array of filter functions
  */
-export function createFilters(filters: Filter | Filter[]): TransformFunction[] {
+export function createFilters(filters: MaybeArray<Filter>): TransformFunction[] {
     if (!filters) {
         return [];
     }
 
-    const filterArray = Array.isArray(filters) ? filters : [filters];
+    const filterArray = toArray(filters);
     if (!filterArray.length) {
         return [];
     }
@@ -72,12 +75,15 @@ export function createFilters(filters: Filter | Filter[]): TransformFunction[] {
  * @param modifiers one or multiple presets or functions
  * @returns an array of modifier functions
  */
-export function createModifiers(modifiers: Modifier | Modifier[]): TransformFunction[] {
+export function createModifiers(modifiers: MaybeArray<Modifier>): TransformFunction[] {
     if (!modifiers || !modifiers.length) {
         return [];
     }
 
-    const modifierArray = Array.isArray(modifiers) ? modifiers : [modifiers];
+    const modifierArray = toArray(modifiers);
+     if (!modifierArray.length) {
+        return [];
+    }
 
     const modifierFunctions = [];
 
