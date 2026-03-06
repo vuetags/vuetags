@@ -1,7 +1,7 @@
 {
     "name": "@vuetags/inputs",
     "description": "Simple, type safe and flexible component library that improves native HTML input elements.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "author": "Michael Verschoof <michael.verschoof@gmail.com>",
     "homepage": "https://vuetags.dev",
     "repository": {
@@ -28,17 +28,18 @@
     "files": [
         "dist",
         "LICENSE",
-        "README.md"
+        "README.md",
+        "CHANGELOG.md"
     ],
     "directories": {
         "test": "test"
     },
-    "types": "./dist/types/index.d.ts",
+    "types": "./dist/types/index.d.mts",
     "main": "./dist/index.mjs",
     "module": "./dist/index.mjs",
     "exports": {
         ".": {
-            "types": "./dist/types.d.ts",
+            "types": "./dist/types.d.mts",
             "import": "./dist/index.mjs"
         }
     },
@@ -49,7 +50,7 @@
         "test:coverage": "clear && vitest run --coverage",
         "test:unit": "clear && vitest run --project unit",
         "test:browser": "clear && vitest run --project browser",
-        "release": "clear && npm install && npm run build && npm publish"
+        "release": "clear && npm install && npm run build && npm publish --access public"
     },
     "devDependencies": {
         "tsdown": "^0.18.1",
