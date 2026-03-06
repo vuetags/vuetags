@@ -8,7 +8,7 @@ Like HTML tags, but better
 - 🔑 Type Safe
 - ⚡ Completely tree shakeable
 - 🚪 Accessible
-- 🌈 nstyle
+- 🌈 Unstyled
 - 🪶 Lightweight
 
 ## Documentation
