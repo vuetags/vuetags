@@ -44,7 +44,10 @@ export default defineConfig({
             }
         ],
 
-        socialLinks: [{ icon: 'github', link: 'https://github.com/vuetags' }],
+        socialLinks: [
+            { icon: 'github', link: 'https://github.com/vuetags/vuetags' },
+            { icon: 'npm', link: 'https://www.npmjs.com/package/@vuetags/inputs' }
+        ],
 
         footer: {
             message: 'Released under the MIT License.',
