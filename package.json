@@ -15,8 +15,6 @@
         "test:browser": "clear && vitest run --project browser",
         "build": "npm --prefix ./packages/inputs/ run build",
         "release": "npm --prefix ./packages/inputs/ run release",
-        "dev": "npm --prefix ./packages/playground/ run dev",
-        "preview": "npm --prefix ./packages/playground/ run preview",
         "update": "npm run build && npm i",
         "docs:dev": "vitepress dev packages/documentation",
         "docs:build": "vitepress build packages/documentation",
