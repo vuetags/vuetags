@@ -6,5 +6,5 @@ export default defineConfig({
     plugins: [Vue({ isProduction: true })],
     external: ['vue', '@vueuse/core'], // TODO: Check if this doesn't cause problems when importing.
     dts: { vue: true },
-    copy: ['README.md', { from: '../../LICENSE', to: 'dist/LICENSE' }]
+    copy: ['README.md', 'CHANGELOG.md', { from: '../../LICENSE', to: 'dist/' }]
 });

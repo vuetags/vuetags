@@ -34,12 +34,12 @@
         "test": "test"
     },
     "types": "./dist/types/index.d.ts",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
+    "main": "./dist/index.mjs",
+    "module": "./dist/index.mjs",
     "exports": {
         ".": {
             "types": "./dist/types.d.ts",
-            "import": "./dist/index.js"
+            "import": "./dist/index.mjs"
         }
     },
     "scripts": {
