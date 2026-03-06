@@ -48,14 +48,16 @@ describe('Creating filters', () => {
         expect(warnSpy).toHaveBeenCalledOnce();
         expect(warnSpy).toHaveBeenCalledWith('Unknown filter preset provided');
 
+        vi.clearAllMocks();
         // @ts-expect-error Type is not allowed as a parameter
         expect(createFilters(42)).toEqual([]);
-        expect(warnSpy).toHaveBeenCalledTimes(2);
+        expect(warnSpy).toHaveBeenCalledTimes(1);
         expect(warnSpy).toHaveBeenCalledWith('Unknown filter provided');
 
+        vi.clearAllMocks();
         // @ts-expect-error Type is not allowed as a parameter
         expect(createFilters([42, null, undefined])).toEqual([]);
-        expect(warnSpy).toHaveBeenCalledTimes(5);
+        expect(warnSpy).toHaveBeenCalledTimes(3);
         expect(warnSpy).toHaveBeenCalledWith('Unknown filter provided');
     });
 
@@ -87,16 +89,24 @@ describe('Creating modifiers', () => {
         // @ts-expect-error Type is not allowed as a parameter
         expect(createModifiers(null)).toEqual([]);
         expect(createModifiers([])).toEqual([]);
+
+        vi.clearAllMocks();
         // @ts-expect-error Type is not allowed as a parameter
         expect(createModifiers('wrong preset')).toEqual([]);
         expect(warnSpy).toHaveBeenCalledOnce();
-        expect(warnSpy).toHaveBeenCalledWith('Unknown modifier preset provided');
+        expect(warnSpy).toHaveBeenCalledWith('Unknown modify preset provided');
+
+        vi.clearAllMocks();
         // @ts-expect-error Type is not allowed as a parameter
         expect(createModifiers(42)).toEqual([]);
+        expect(warnSpy).toHaveBeenCalledOnce();
+        expect(warnSpy).toHaveBeenCalledWith('Unknown modify provided');
+
+        vi.clearAllMocks();
         // @ts-expect-error Type is not allowed as a parameter
         expect(createModifiers([42, null, undefined])).toEqual([]);
-        expect(warnSpy).toHaveBeenCalledTimes(4);
-        expect(warnSpy).toHaveBeenCalledWith('Unknown modifier provided');
+        expect(warnSpy).toHaveBeenCalledTimes(3);
+        expect(warnSpy).toHaveBeenCalledWith('Unknown modify provided');
     });
 
     it('should return a filtered array on partially incorrect values', async () => {

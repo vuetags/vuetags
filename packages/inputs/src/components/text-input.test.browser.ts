@@ -46,7 +46,7 @@ describe('Filtering paste', () => {
         await wrapper.setProps({ filters: 'numbers' });
 
         await userEvent.paste();
-        await expect.element(input).toHaveDisplayValue('abcdef');
+        await expect.element(input).toHaveDisplayValue('123');
     });
 });
 
@@ -55,7 +55,7 @@ function mountComponent(): VueWrapper {
         props: {
             name: 'testing-text-input',
             placeholder: 'test',
-            filters: 'numbers'
+            filters: 'letters'
         },
         attachTo: document.body
     });

@@ -30,43 +30,7 @@ const ModifierPresetFunctions: Record<ModifierPreset, TransformFunction> = {
  * @returns an array of filter functions
  */
 export function createFilters(filters: MaybeArray<Filter>): TransformFunction[] {
-    if (!filters) {
-        return [];
-    }
-
-    const filterArray = toArray(filters);
-    if (!filterArray.length) {
-        return [];
-    }
-
-    const filterFunctions = [];
-
-    for (const filter of filterArray) {
-        // FIXME: Check function more specifically
-        if (typeof filter === 'function') {
-            filterFunctions.push(filter);
-            continue;
-        }
-
-        if (filter instanceof RegExp) {
-            filterFunctions.push((value: string) => (value.match(filter) || []).join(''));
-            continue;
-        }
-
-        if (typeof filter === 'string') {
-            if (!Object.keys(FilterPresetFunctions).includes(filter)) {
-                console.warn('Unknown filter preset provided');
-                continue;
-            }
-
-            filterFunctions.push(FilterPresetFunctions[filter]);
-            continue;
-        }
-
-        console.warn('Unknown filter provided');
-    }
-
-    return filterFunctions;
+    return createTransformers(filters, FilterPresetFunctions, 'filter');
 }
 
 /**
@@ -76,38 +40,56 @@ export function createFilters(filters: MaybeArray<Filter>): TransformFunction[] 
  * @returns an array of modifier functions
  */
 export function createModifiers(modifiers: MaybeArray<Modifier>): TransformFunction[] {
-    if (!modifiers || !modifiers.length) {
+    return createTransformers(modifiers, ModifierPresetFunctions, 'modify');
+}
+
+/**
+ * Create transform functions from the provided filters or modifiers
+ *
+ * @param transformers one or multiple presets and/or functions
+ * @returns an array of transform functions
+ */
+function createTransformers<T extends Filter | Modifier, P extends FilterPreset | ModifierPreset>(
+    transformers: MaybeArray<T>,
+    presets: Record<P, TransformFunction>,
+    type: 'filter' | 'modify'
+): TransformFunction[] {
+    if (!transformers) {
         return [];
     }
 
-    const modifierArray = toArray(modifiers);
-     if (!modifierArray.length) {
+    const transformerArray = toArray(transformers);
+    if (!transformerArray.length) {
         return [];
     }
 
-    const modifierFunctions = [];
+    const transformFunctions = [];
 
-    for (const modifier of modifierArray) {
-        // FIXME: Check function more specifically
-        if (typeof modifier === 'function') {
-            modifierFunctions.push(modifier);
+    for (const transformer of transformerArray) {
+        if (transformer instanceof Function) {
+            transformFunctions.push(transformer);
             continue;
         }
 
-        if (typeof modifier === 'string') {
-            if (!Object.keys(ModifierPresetFunctions).includes(modifier)) {
-                console.warn('Unknown modifier preset provided');
+        if (transformer instanceof RegExp) {
+            transformFunctions.push((value: string) => (value.match(transformer) || []).join(''));
+            continue;
+        }
+
+        if (typeof transformer === 'string') {
+            if (!Object.keys(presets).includes(transformer)) {
+                console.warn(`Unknown ${type} preset provided`);
                 continue;
             }
 
-            modifierFunctions.push(ModifierPresetFunctions[modifier]);
+            transformFunctions.push(presets[transformer as string as P]);
             continue;
         }
 
-        console.warn('Unknown modifier provided');
+        console.warn(`Unknown ${type} provided`);
     }
 
-    return modifierFunctions;
+    return transformFunctions;
 }
 
 /**
