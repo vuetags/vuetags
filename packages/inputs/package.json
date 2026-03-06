@@ -1,7 +1,7 @@
 {
     "name": "@vuetags/inputs",
     "description": "Simple, type safe and flexible component library that improves native HTML input elements.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "Michael Verschoof <michael.verschoof@gmail.com>",
     "homepage": "https://vuetags.dev",
     "repository": {
