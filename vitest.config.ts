@@ -44,8 +44,7 @@ export default mergeConfig(
                     '**/types.ts',
                     '**/tsdown.config.ts',
                     '**/dist',
-                    '**/test/**',
-                    'packages/playground/'
+                    '**/test/**'
                 ]
             }
         }
