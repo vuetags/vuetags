@@ -53,8 +53,8 @@
         "release": "clear && npm install && npm run build && npm publish --access public"
     },
     "devDependencies": {
-        "tsdown": "^0.18.1",
+        "tsdown": "^0.21.0",
         "typescript": "^5.9.3",
-        "unplugin-vue": "^7.1.0"
+        "unplugin-vue": "^7.1.1"
     }
 }
