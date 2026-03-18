@@ -1,6 +1,6 @@
-import { afterEach, describe, expect, expectTypeOf, it, vi } from 'vitest';
-import type { TransformFunction } from './model';
-import { createFilters, createModifiers, transform } from './model';
+import type { TransformFunction } from '@/util/model';
+import { createFilters, createModifiers, transform } from '@/util/model';
+import { afterEach, describe, expect, expectTypeOf, it, vi } from 'vite-plus/test';
 
 const letterFilter = (value: string) => (value.match(/[A-Za-z]/g) || []).join('');
 const numberFilter = (value: string) => (value.match(/[0-9]/g) || []).join('');
@@ -131,7 +131,9 @@ describe('Transforming values', () => {
         const testValue = 'AbC123dEf';
 
         expect(transform(testValue, letterFilter, uppercaseModifier)).toEqual('ABCDEF');
-        expect(transform(testValue, letterFilter, uppercaseModifier, lowercaseModifier)).toEqual('abcdef');
+        expect(transform(testValue, letterFilter, uppercaseModifier, lowercaseModifier)).toEqual(
+            'abcdef'
+        );
     });
 
     it('should return an empty string if there is no value', async () => {

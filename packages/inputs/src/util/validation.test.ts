@@ -1,6 +1,7 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { Collection, has } from './collections';
-import { replaceRequiredPreset, validate } from './validation';
+import type { Collection } from '@/util/collections';
+import { has } from '@/util/collections';
+import { replaceRequiredPreset, validate } from '@/util/validation';
+import { afterEach, describe, expect, it, vi } from 'vite-plus/test';
 
 const validResponse = { valid: true, failed: [] };
 const invalidResponse = { valid: false, failed: [] };
@@ -30,7 +31,9 @@ describe('Validating string values', () => {
         expect(validate('abc', booleanValidation, stringValidation)).toEqual(validResponse);
 
         // Invalid values
-        expect(validate('abcdef', booleanValidation, stringValidation)).toEqual(invalidResponseWithMessage);
+        expect(validate('abcdef', booleanValidation, stringValidation)).toEqual(
+            invalidResponseWithMessage
+        );
     });
 
     it('should filter out non-usable validators', () => {
@@ -40,8 +43,10 @@ describe('Validating string values', () => {
 });
 
 describe('Validating radio values', () => {
-    const requiredValidation = (modelValue: string | unknown) => modelValue !== null && modelValue !== undefined;
-    const specificValueValidation = (modelValue: string | unknown) => (modelValue === 'abc' ? true : 'Wrong value');
+    const requiredValidation = (modelValue: string | unknown) =>
+        modelValue !== null && modelValue !== undefined;
+    const specificValueValidation = (modelValue: string | unknown) =>
+        modelValue === 'abc' ? true : 'Wrong value';
 
     const invalidResponseWithMessage = { valid: false, failed: ['Wrong value'] };
 
@@ -60,7 +65,9 @@ describe('Validating radio values', () => {
         expect(validate('abc', requiredValidation, specificValueValidation)).toEqual(validResponse);
 
         // Invalid values
-        expect(validate('abcdef', requiredValidation, specificValueValidation)).toEqual(invalidResponseWithMessage);
+        expect(validate('abcdef', requiredValidation, specificValueValidation)).toEqual(
+            invalidResponseWithMessage
+        );
     });
 
     it('should filter out non-usable validators', () => {
@@ -87,18 +94,24 @@ describe('Validating file values', () => {
 
         // Invalid values
         expect(validate([], requiredValidation)).toEqual(invalidResponse);
-        expect(validate([{ ...fileMock, name: 'invalid-file.txt' }], specificValueValidation)).toEqual(
-            invalidResponseWithMessage
-        );
+        expect(
+            validate([{ ...fileMock, name: 'invalid-file.txt' }], specificValueValidation)
+        ).toEqual(invalidResponseWithMessage);
     });
 
     it('should validate value with a multiple functions', () => {
         // Valid values
-        expect(validate([fileMock], requiredValidation, specificValueValidation)).toEqual(validResponse);
+        expect(validate([fileMock], requiredValidation, specificValueValidation)).toEqual(
+            validResponse
+        );
 
         // Invalid values
         expect(
-            validate([{ ...fileMock, name: 'invalid-file.txt' }], requiredValidation, specificValueValidation)
+            validate(
+                [{ ...fileMock, name: 'invalid-file.txt' }],
+                requiredValidation,
+                specificValueValidation
+            )
         ).toEqual(invalidResponseWithMessage);
     });
 
@@ -142,18 +155,28 @@ describe('Validating checkbox values', () => {
         expect(validate(['invalid'], requiredValidation)).toEqual(invalidResponse);
         expect(validate(['invalid'], specificValueValidation)).toEqual(invalidResponseWithMessage);
         expect(validate(new Set(['invalid']), requiredValidation)).toEqual(invalidResponse);
-        expect(validate(new Set(['invalid']), specificValueValidation)).toEqual(invalidResponseWithMessage);
+        expect(validate(new Set(['invalid']), specificValueValidation)).toEqual(
+            invalidResponseWithMessage
+        );
     });
 
     it('should validate value with a multiple functions', () => {
         // Valid values
         expect(validate(true, requiredValidation, specificValueValidation)).toEqual(validResponse);
-        expect(validate(['test'], requiredValidation, specificValueValidation)).toEqual(validResponse);
-        expect(validate(new Set(['test']), requiredValidation, specificValueValidation)).toEqual(validResponse);
+        expect(validate(['test'], requiredValidation, specificValueValidation)).toEqual(
+            validResponse
+        );
+        expect(validate(new Set(['test']), requiredValidation, specificValueValidation)).toEqual(
+            validResponse
+        );
 
         // Invalid values
-        expect(validate(false, requiredValidation, specificValueValidation)).toEqual(invalidResponseWithMessage);
-        expect(validate(['invalid'], requiredValidation, specificValueValidation)).toEqual(invalidResponseWithMessage);
+        expect(validate(false, requiredValidation, specificValueValidation)).toEqual(
+            invalidResponseWithMessage
+        );
+        expect(validate(['invalid'], requiredValidation, specificValueValidation)).toEqual(
+            invalidResponseWithMessage
+        );
         expect(validate(new Set(['invalid']), requiredValidation, specificValueValidation)).toEqual(
             invalidResponseWithMessage
         );
@@ -170,12 +193,18 @@ describe('Replacing presets', () => {
 
     it('should replace a preset with a function', () => {
         expect(replaceRequiredPreset(['required'], validation)).toEqual([validation]);
-        expect(replaceRequiredPreset([validation, 'required'], validation)).toEqual([validation, validation]);
+        expect(replaceRequiredPreset([validation, 'required'], validation)).toEqual([
+            validation,
+            validation
+        ]);
     });
 
     it('should not replace anything if there is no preset', () => {
         expect(replaceRequiredPreset([validation], validation)).toEqual([validation]);
-        expect(replaceRequiredPreset([validation, validation], validation)).toEqual([validation, validation]);
+        expect(replaceRequiredPreset([validation, validation], validation)).toEqual([
+            validation,
+            validation
+        ]);
     });
 
     it('should filter out the preset if there is no replacement function', () => {

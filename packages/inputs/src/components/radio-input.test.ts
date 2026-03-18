@@ -2,7 +2,7 @@ import RadioInput from '@/components/radio-input.vue';
 import { testFocus, testRefocus } from '@test/focus';
 import { mountComponent } from '@test/util/mount';
 import { DOMWrapper, mount } from '@vue/test-utils';
-import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vite-plus/test';
 import { defineComponent, ref } from 'vue';
 
 const defaultProps = {
@@ -232,7 +232,10 @@ describe('Validating model value', () => {
     });
 
     it('should validate the object model value', async () => {
-        const { wrapper } = mountRadioInput({ modelValue: { foo: 'test', bar: true }, validators: 'required' });
+        const { wrapper } = mountRadioInput({
+            modelValue: { foo: 'test', bar: true },
+            validators: 'required'
+        });
 
         const validation = wrapper.vm.validate();
         expect(validation).toEqual({ valid: true, failed: [] });
@@ -257,7 +260,8 @@ function mountRadioInput(customProps: Record<string, unknown> = {}) {
         ...defaultProps,
         ...customProps,
         modelValue: testModel.value,
-        'onUpdate:modelValue': (value: string | Record<string, unknown> | undefined) => (testModel.value = value)
+        'onUpdate:modelValue': (value: string | Record<string, unknown> | undefined) =>
+            (testModel.value = value)
     });
 
     return {

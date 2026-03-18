@@ -1,9 +1,9 @@
 import CheckboxInput from '@/components/checkbox-input.vue';
-import { Collection } from '@/util/collections';
+import type { Collection } from '@/util/collections';
 import { testFocus } from '@test/focus';
 import { mountComponent } from '@test/util/mount';
 import { DOMWrapper, mount } from '@vue/test-utils';
-import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vite-plus/test';
 import { ref } from 'vue';
 
 const warnSpy = vi.spyOn(console, 'warn').mockImplementation(vi.fn());
@@ -71,7 +71,10 @@ describe('Checking/unchecking components', () => {
             });
 
             it('should check array model value', async () => {
-                const { wrapper, testModel } = mountCheckboxInput({ value: 'test', modelValue: [] });
+                const { wrapper, testModel } = mountCheckboxInput({
+                    value: 'test',
+                    modelValue: []
+                });
                 expect(testModel.value).toEqual([]);
 
                 await wrapper.vm.check();
@@ -90,7 +93,10 @@ describe('Checking/unchecking components', () => {
                 expect(testModel.value).toBeUndefined();
                 expect(input.element.checked).toBe(false);
 
-                expect(warnSpy).toBeCalledWith('Could not tick checkbox-item.', 'There is no value to set.');
+                expect(warnSpy).toBeCalledWith(
+                    'Could not tick checkbox-item.',
+                    'There is no value to set.'
+                );
             });
         });
 
@@ -128,7 +134,10 @@ describe('Checking/unchecking components', () => {
             });
 
             it('should uncheck string array model value', async () => {
-                const { wrapper, testModel } = mountCheckboxInput({ value: 'test', modelValue: ['test'] });
+                const { wrapper, testModel } = mountCheckboxInput({
+                    value: 'test',
+                    modelValue: ['test']
+                });
                 expect(testModel.value).toEqual(['test']);
 
                 await wrapper.vm.uncheck();
@@ -138,18 +147,27 @@ describe('Checking/unchecking components', () => {
             });
 
             it('should give a warning when the value is not set', async () => {
-                const { wrapper, testModel } = mountCheckboxInput({ value: undefined, modelValue: [] });
+                const { wrapper, testModel } = mountCheckboxInput({
+                    value: undefined,
+                    modelValue: []
+                });
                 expect(testModel.value).toEqual([]);
 
                 await wrapper.vm.uncheck();
 
                 expect(testModel.value).toEqual([]);
-                expect(warnSpy).toBeCalledWith('Could not untick checkbox-item.', 'There is no value to unset.');
+                expect(warnSpy).toBeCalledWith(
+                    'Could not untick checkbox-item.',
+                    'There is no value to unset.'
+                );
             });
         });
 
         it('should uncheck using model value', async () => {
-            const { wrapper, testModel } = mountCheckboxInput({ value: 'test', modelValue: ['test'] });
+            const { wrapper, testModel } = mountCheckboxInput({
+                value: 'test',
+                modelValue: ['test']
+            });
             expect(testModel.value).toEqual(['test']);
 
             await wrapper.setValue([]);
@@ -219,7 +237,10 @@ describe('Validating model value', () => {
         const validation = wrapper.vm.validate();
         expect(validation).toBeUndefined();
         expect(warnSpy).toHaveBeenCalledOnce();
-        expect(warnSpy).toHaveBeenCalledWith('Could not validate checkbox-item.', 'There is no model value.');
+        expect(warnSpy).toHaveBeenCalledWith(
+            'Could not validate checkbox-item.',
+            'There is no model value.'
+        );
     });
 
     it('should give a warning when the model value is empty', async () => {
@@ -232,7 +253,10 @@ describe('Validating model value', () => {
         const validation = wrapper.vm.validate();
         expect(validation).toEqual({ valid: true, failed: [] });
         expect(warnSpy).toHaveBeenCalledOnce();
-        expect(warnSpy).toHaveBeenCalledWith('Could not validate checkbox-item.', 'There is no value to validate.');
+        expect(warnSpy).toHaveBeenCalledWith(
+            'Could not validate checkbox-item.',
+            'There is no value to validate.'
+        );
     });
 });
 

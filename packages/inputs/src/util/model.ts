@@ -1,4 +1,4 @@
-import { MaybeArray } from '@/components/types';
+import type { MaybeArray } from '@/components/types';
 import { toArray } from '@/util/arrays';
 
 export type TransformFunction = (value: string) => string;
@@ -123,7 +123,9 @@ export function transform(value: string | undefined, ...transformers: TransformF
  * @param transformers the collection of presets, regular expressions and/or transform functions
  * @returns the filtered array of transformers
  */
-export function filterPresets<Transformer>(transformers: Transformer | Transformer[]): Transformer[] {
+export function filterPresets<Transformer>(
+    transformers: Transformer | Transformer[]
+): Transformer[] {
     const items = Array.isArray(transformers) ? transformers : [transformers];
 
     return items.filter((filter) => typeof filter !== 'string');

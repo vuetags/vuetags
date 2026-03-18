@@ -1,55 +1,34 @@
 {
     "name": "@vuetags/root",
-    "description": "Simple, type safe and flexible component library that improves native HTML tags.",
     "version": "1.0.0",
     "private": true,
-    "type": "module",
+    "description": "Simple, type safe and flexible component library that improves native HTML tags.",
     "workspaces": [
+        "apps/*",
         "packages/*"
     ],
+    "type": "module",
     "scripts": {
+        "ready": "vp fmt && vp lint && vp run test -r && vp run build -r",
+        "dev": "vp run website#dev",
+        "prepare": "vp config",
         "test": "clear && vitest run",
         "test:watch": "clear && vitest",
         "test:coverage": "clear && vitest run --coverage",
         "test:unit": "clear && vitest run --project unit",
         "test:browser": "clear && vitest run --project browser",
-        "build": "npm --prefix ./packages/inputs/ run build",
-        "release": "npm --prefix ./packages/inputs/ run release",
+        "build:inputs": "npm --prefix ./packages/inputs/ run build",
+        "release:input": "npm --prefix ./packages/inputs/ run release",
         "update": "npm run build && npm i",
-        "docs:dev": "vitepress dev packages/documentation",
-        "docs:build": "vitepress build packages/documentation",
-        "docs:preview": "vitepress preview packages/documentation"
+        "docs:dev": "vitepress dev apps/documentation",
+        "docs:build": "vitepress build apps/documentation",
+        "docs:preview": "vitepress preview apps/documentation"
     },
     "devDependencies": {
-        "@tsconfig/node22": "^22.0.5",
-        "@types/jsdom": "^28.0.0",
-        "@types/node": "^25.3.5",
-        "@vitejs/plugin-vue": "^6.0.4",
-        "@vitest/browser": "^4.0.18",
-        "@vitest/browser-playwright": "^4.0.18",
-        "@vitest/coverage-v8": "^4.0.18",
-        "@vitest/eslint-plugin": "^1.6.9",
-        "@vue/eslint-config-prettier": "^10.2.0",
-        "@vue/eslint-config-typescript": "^14.7.0",
-        "@vue/test-utils": "^2.4.6",
-        "@vue/tsconfig": "^0.9.0",
-        "@vueuse/core": "^14.2.1",
-        "eslint": "^10.0.3",
-        "eslint-plugin-vue": "^10.8.0",
-        "happy-dom": "^20.8.3",
-        "jiti": "^2.6.1",
-        "jsdom": "^28.1.0",
-        "playwright": "^1.58.2",
-        "prettier": "^3.8.1",
-        "typescript": "^5.9.3",
-        "vite": "npm:rolldown-vite@7.3.1",
-        "vite-plugin-vue-devtools": "^8.0.7",
-        "vitepress": "^2.0.0-alpha.16",
-        "vitest": "^4.0.18",
-        "vue": "^3.5.29",
-        "vue-tsc": "^3.2.5"
+        "vite-plus": "catalog:"
     },
-    "dependencies": {
-        "@vuetags/inputs": "^0.1.2"
-    }
+    "engines": {
+        "node": ">=22.12.0"
+    },
+    "packageManager": "pnpm@10.32.1"
 }

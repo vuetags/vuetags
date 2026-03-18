@@ -1,5 +1,5 @@
-import { expect, it } from 'vitest';
-import { toArray } from './arrays';
+import { toArray } from '@/util/arrays';
+import { expect, it } from 'vite-plus/test';
 
 it('should transform non-array values', () => {
     expect(toArray('something')).toEqual(['something']);

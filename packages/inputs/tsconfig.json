@@ -1,25 +1,24 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "outDir": "dist",
         "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "declaration": true,
-        "isolatedModules": true,
-        "strict": true,
-        "strictNullChecks": true,
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "useDefineForClassFields": true,
-        "types": ["node", "vue", "vitest/globals", "vite/client"],
-        "paths": {
-            "@/*": ["src/*"],
-            "@test/*": ["test/*"]
-        },
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
-        "skipLibCheck": true
+        "moduleDetection": "force",
+        "module": "preserve",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "types": ["node"],
+        "strict": true,
+        "noUnusedLocals": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@/*": ["./src/*"],
+            "@test/*": ["./test/*"]
+        }
     },
-    "include": ["src/**/*.ts", "src/**/*.vue"]
+    "include": ["src"]
 }

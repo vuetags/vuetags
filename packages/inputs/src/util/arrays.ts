@@ -1,4 +1,4 @@
-import { MaybeArray } from '@/components/types';
+import type { MaybeArray } from '@/components/types';
 
 /**
  * Convert a value to an array, unless it's already an array.

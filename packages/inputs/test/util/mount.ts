@@ -1,5 +1,5 @@
 import { DOMWrapper, mount, VueWrapper } from '@vue/test-utils';
-import { expect } from 'vitest';
+import { expect } from 'vite-plus/test';
 import type { Component } from 'vue';
 
 export type InputElement = HTMLInputElement | HTMLTextAreaElement;

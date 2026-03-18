@@ -1,8 +1,13 @@
-import { readonly, ref, ShallowRef } from 'vue';
+import type { ShallowRef } from 'vue';
+import { readonly, ref } from 'vue';
 
-type FocusableEmits = ((name: 'focus', event: FocusEvent) => void) & ((name: 'blur', event: FocusEvent) => void);
+type FocusableEmits = ((name: 'focus', event: FocusEvent) => void) &
+    ((name: 'blur', event: FocusEvent) => void);
 
-export const useFocusable = <T extends HTMLElement>(element: Readonly<ShallowRef<T | null>>, emit: FocusableEmits) => {
+export const useFocusable = <T extends HTMLElement>(
+    element: Readonly<ShallowRef<T | null>>,
+    emit: FocusableEmits
+) => {
     const focused = ref<boolean>();
 
     /**
