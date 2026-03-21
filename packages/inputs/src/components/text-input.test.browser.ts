@@ -19,16 +19,13 @@ describe('Filtering keys', () => {
         const input = page.getByPlaceholder('test');
 
         await input.click();
-
-        // @ts-expect-error Vite+ doesn't recognize the element function yet
         await expect.element(input).toHaveFocus();
 
         await userEvent.keyboard('abc123def');
         expect(input.element().classList.contains('focused')).toBe(true);
         expect(input.element().classList.contains('focused')).toBe(true);
-        // @ts-expect-error Vite+ doesn't recognize the element function yet
+
         await expect.element(input).toHaveValue('abcdef');
-        // @ts-expect-error Vite+ doesn't recognize the element function yet
         await expect.element(input).toHaveDisplayValue('abcdef');
     });
 });
@@ -40,22 +37,18 @@ describe('Filtering paste', () => {
         const input = page.getByPlaceholder('test');
 
         await input.click();
-        // @ts-expect-error Vite+ doesn't recognize the element function yet
         await expect.element(input).toHaveFocus();
 
         await userEvent.fill(input, 'abc123def');
-        // @ts-expect-error Vite+ doesn't recognize the element function yet
         await expect.element(input).toHaveDisplayValue('abc123def');
 
         await userEvent.dblClick(input);
         await userEvent.cut();
-        // @ts-expect-error Vite+ doesn't recognize the element function yet
         await expect.element(input).toHaveDisplayValue('');
 
         await wrapper.setProps({ filters: 'numbers' });
 
         await userEvent.paste();
-        // @ts-expect-error Vite+ doesn't recognize the element function yet
         await expect.element(input).toHaveDisplayValue('123');
     });
 });

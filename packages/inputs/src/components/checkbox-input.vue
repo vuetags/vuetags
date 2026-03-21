@@ -15,7 +15,11 @@ import type { FocusableEmits, MaybeArray, ValidationResult } from '@/components/
 import { useFocusable } from '@/composables/focus';
 import { toArray } from '@/util/arrays';
 import type { Collection } from '@/util/collections';
-import { add as addToCollection, has as hasInCollection, remove as removeFromCollection } from '@/util/collections';
+import {
+    add as addToCollection,
+    has as hasInCollection,
+    remove as removeFromCollection
+} from '@/util/collections';
 import type { ValidationFunction, ValidationPresets } from '@/util/validation';
 import { replaceRequiredPreset, validate } from '@/util/validation';
 import type { InputHTMLAttributes } from 'vue';
@@ -26,9 +30,12 @@ import { computed, useTemplateRef } from 'vue';
  */
 export type CheckboxModel = Collection<string> | boolean;
 
-type ValidatableProp = { validators?: MaybeArray<ValidationPresets | ValidationFunction<CheckboxModel>> };
+type ValidatableProp = {
+    validators?: MaybeArray<ValidationPresets | ValidationFunction<CheckboxModel>>;
+};
 
-type Props = Omit</* @vue-ignore */ InputHTMLAttributes, 'type' | 'value'> & ValidatableProp & { value?: string };
+type Props = Omit</* @vue-ignore */ InputHTMLAttributes, 'type' | 'value'> &
+    ValidatableProp & { value?: string };
 
 const { value, validators = [] } = defineProps<Props>();
 
@@ -46,7 +53,9 @@ const { focused, focus, blur, onBlur, onFocus } = useFocusable(element, emit);
 /**
  * Validator function for 'required' preset.
  */
-const required: ValidationFunction<CheckboxModel> = (modelValue: CheckboxModel): boolean | 'required' => {
+const required: ValidationFunction<CheckboxModel> = (
+    modelValue: CheckboxModel
+): boolean | 'required' => {
     if (modelValue === undefined || typeof modelValue === 'boolean') {
         return !!modelValue || 'required';
     }

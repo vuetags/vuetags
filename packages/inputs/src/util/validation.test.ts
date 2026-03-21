@@ -132,7 +132,7 @@ describe('Validating checkbox values', () => {
 
     const specificValueValidation = (modelValue: boolean | Collection<string>) => {
         if (modelValue === undefined || typeof modelValue === 'boolean') {
-            return !!modelValue ? true : 'Wrong value';
+            return modelValue ? true : 'Wrong value';
         }
 
         return has('test', modelValue) ? true : 'Wrong value';

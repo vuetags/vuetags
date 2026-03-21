@@ -253,15 +253,22 @@ describe('Validating model value', () => {
     });
 });
 
-function mountRadioInput(customProps: Record<string, unknown> = {}) {
-    const testModel = ref<string | unknown>(customProps.modelValue ?? undefined);
+type RadioValues =
+    | {
+          value?: string | object | null;
+          modelValue?: string | object | null;
+          validators?: 'required';
+      }
+    | undefined;
+
+function mountRadioInput(customProps: RadioValues = {}) {
+    const testModel = ref<string | object | undefined>(customProps.modelValue ?? undefined);
 
     const result = mountComponent<typeof RadioInput>(RadioInput, 'input', {
         ...defaultProps,
         ...customProps,
         modelValue: testModel.value,
-        'onUpdate:modelValue': (value: string | Record<string, unknown> | undefined) =>
-            (testModel.value = value)
+        'onUpdate:modelValue': (value: string | object | undefined) => (testModel.value = value)
     });
 
     return {

@@ -1,7 +1,10 @@
 import type { ValidationResult } from '@/components/types';
 
 /* Generic validate function. */
-export type ValidationFunction<ModelValue = string> = (modelValue: ModelValue, ...args: unknown[]) => boolean | string;
+export type ValidationFunction<ModelValue = string> = (
+    modelValue: ModelValue,
+    ...args: unknown[]
+) => boolean | string;
 
 /* Validation presets. */
 export type ValidationPresets = 'required';

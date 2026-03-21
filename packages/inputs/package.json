@@ -1,54 +1,52 @@
 {
-  "name": "@vuetags/inputs",
-  "version": "0.1.2",
-  "description": "Simple, type safe and flexible component library that improves native HTML input elements.",
-  "keywords": [
-    "components",
-    "elements",
-    "html",
-    "safe",
-    "tags",
-    "ts",
-    "type",
-    "typed",
-    "typescript",
-    "vue"
-  ],
-  "homepage": "https://vuetags.dev",
-  "bugs": {
-    "url": "https://github.com/vuetags/vuetags/issues"
-  },
-  "license": "MIT",
-  "author": "Michael Verschoof <michael.verschoof@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuetags/vuetags.git"
-  },
-  "directories": {
-    "test": "test"
-  },
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md",
-    "CHANGELOG.md"
-  ],
-  "type": "module",
-  "types": "./dist/index.d.mts",
-  "exports": {
-    ".": "./dist/index.mjs",
-    "./package.json": "./package.json"
-  },
-  "scripts": {
-    "build": "vp pack",
-    "dev": "vp pack --watch",
-    "test": "vp test",
-    "check": "vp check",
-    "test:watch": "vp test watch",
-    "test:coverage": "vp test --coverage",
-    "test:unit": "vp test --project unit",
-    "test:browser": "vp test --project browser",
-    "release": "vp install && vp pack && npm publish --access public",
-    "prepublishOnly": "pnpm run build"
-  }
+    "name": "@vuetags/inputs",
+    "version": "0.1.2",
+    "description": "Simple, type safe and flexible component library that improves native HTML input elements.",
+    "keywords": [
+        "components",
+        "elements",
+        "html",
+        "safe",
+        "tags",
+        "ts",
+        "type",
+        "typed",
+        "typescript",
+        "vue"
+    ],
+    "homepage": "https://vuetags.dev",
+    "bugs": {
+        "url": "https://github.com/vuetags/vuetags/issues"
+    },
+    "license": "MIT",
+    "author": "Michael Verschoof <michael.verschoof@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vuetags/vuetags.git"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md",
+        "CHANGELOG.md"
+    ],
+    "type": "module",
+    "types": "./dist/index.d.mts",
+    "exports": {
+        ".": "./dist/index.mjs",
+        "./package.json": "./package.json"
+    },
+    "scripts": {
+        "build": "vp pack",
+        "test": "vp test",
+        "check": "vp check",
+        "test:watch": "vp test watch",
+        "test:coverage": "vp test --coverage",
+        "test:unit": "vp test --project unit",
+        "test:browser": "vp test --project browser",
+        "release": "vp install && vp-check && vp pack && npm publish --access public"
+    }
 }
