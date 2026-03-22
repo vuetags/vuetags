@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
-    staged: {
-        '*': ''
-        // "*": "vp check --fix",
+    fmt: {
+        semi: true,
+        singleQuote: true,
+        tabWidth: 4,
+        trailingComma: 'none'
     },
-    lint: { options: { typeAware: true, typeCheck: true } }
+    staged: {
+        '*': 'vp check --fix'
+    }
 });

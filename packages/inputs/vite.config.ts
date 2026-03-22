@@ -6,12 +6,6 @@ import { playwright } from 'vite-plus/test/browser-playwright';
 
 export default defineConfig({
     plugins: [vue()],
-    resolve: {
-        alias: {
-            '@test': fileURLToPath(new URL('test', import.meta.url)),
-            '@': fileURLToPath(new URL('src', import.meta.url))
-        }
-    },
     pack: {
         entry: './src/index.ts',
         exports: true,
@@ -19,12 +13,6 @@ export default defineConfig({
         dts: { vue: true },
         deps: { neverBundle: ['vue', '@vueuse/core'] },
         copy: ['README.md', 'CHANGELOG.md', { from: '../../LICENSE', to: 'dist/' }]
-    },
-    fmt: {
-        semi: true,
-        singleQuote: true,
-        tabWidth: 4,
-        trailingComma: 'none'
     },
     test: {
         projects: [
@@ -52,7 +40,6 @@ export default defineConfig({
                 }
             }
         ],
-
         environment: 'jsdom',
         exclude: [...configDefaults.exclude, 'e2e/**'],
         root: fileURLToPath(new URL('./', import.meta.url)),
