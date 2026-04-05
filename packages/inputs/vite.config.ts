@@ -15,6 +15,10 @@ export default defineConfig({
         copy: ['README.md', 'CHANGELOG.md', { from: '../../LICENSE', to: 'dist/' }]
     },
     test: {
+        alias: {
+            '@/': new URL('./src/', import.meta.url).pathname,
+            '@test': new URL('./test/', import.meta.url).pathname
+        },
         projects: [
             {
                 extends: true,
@@ -35,7 +39,7 @@ export default defineConfig({
                         enabled: true,
                         headless: true,
                         screenshotFailures: false,
-                        instances: [{ browser: 'chromium' }]
+                        instances: [{ browser: 'firefox' }]
                     }
                 }
             }
