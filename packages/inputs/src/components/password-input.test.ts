@@ -3,7 +3,7 @@ import { testFocus, testRefocus } from '@test/focus';
 import { mountComponent } from '@test/util/mount';
 import { testRequiredValidation } from '@test/validate';
 import { mount } from '@vue/test-utils';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vite-plus/test';
 import { ref } from 'vue';
 
 const defaultProps = {

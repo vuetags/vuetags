@@ -1,60 +1,52 @@
 {
     "name": "@vuetags/inputs",
-    "description": "Simple, type safe and flexible component library that improves native HTML input elements.",
     "version": "0.1.2",
-    "author": "Michael Verschoof <michael.verschoof@gmail.com>",
+    "description": "Simple, type safe and flexible component library that improves native HTML input elements.",
+    "keywords": [
+        "components",
+        "elements",
+        "html",
+        "safe",
+        "tags",
+        "ts",
+        "type",
+        "typed",
+        "typescript",
+        "vue"
+    ],
     "homepage": "https://vuetags.dev",
+    "bugs": {
+        "url": "https://github.com/vuetags/vuetags/issues"
+    },
+    "license": "MIT",
+    "author": "Michael Verschoof <michael.verschoof@gmail.com>",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/vuetags/vuetags.git"
     },
-    "bugs": {
-        "url": "https://github.com/vuetags/vuetags/issues"
+    "directories": {
+        "test": "test"
     },
-    "keywords": [
-        "vue",
-        "components",
-        "tags",
-        "elements",
-        "html",
-        "typed",
-        "typescript",
-        "ts",
-        "type",
-        "safe"
-    ],
-    "license": "MIT",
-    "type": "module",
     "files": [
         "dist",
         "LICENSE",
         "README.md",
         "CHANGELOG.md"
     ],
-    "directories": {
-        "test": "test"
-    },
-    "types": "./dist/types/index.d.mts",
-    "main": "./dist/index.mjs",
-    "module": "./dist/index.mjs",
+    "type": "module",
+    "types": "./dist/index.d.mts",
     "exports": {
-        ".": {
-            "types": "./dist/types.d.mts",
-            "import": "./dist/index.mjs"
-        }
+        ".": "./dist/index.mjs",
+        "./package.json": "./package.json"
     },
     "scripts": {
-        "build": "tsdown",
-        "test": "clear && vitest run",
-        "test:watch": "clear && vitest",
-        "test:coverage": "clear && vitest run --coverage",
-        "test:unit": "clear && vitest run --project unit",
-        "test:browser": "clear && vitest run --project browser",
-        "release": "clear && npm install && npm run build && npm publish --access public"
-    },
-    "devDependencies": {
-        "tsdown": "^0.21.0",
-        "typescript": "^5.9.3",
-        "unplugin-vue": "^7.1.1"
+        "build": "vp pack",
+        "test": "vp test",
+        "check": "vp check",
+        "test:watch": "vp test watch",
+        "test:coverage": "vp test --coverage",
+        "test:unit": "vp test --project unit",
+        "test:browser": "vp test --project browser",
+        "release": "vp install && vp-check && vp pack && npm publish --access public"
     }
 }

@@ -1,5 +1,12 @@
 <template>
-    <input ref="element" :class="{ focused }" type="file" @change="onChange" @focus="onFocus" @blur="onBlur" />
+    <input
+        ref="element"
+        :class="{ focused }"
+        type="file"
+        @change="onChange"
+        @focus="onFocus"
+        @blur="onBlur"
+    />
 </template>
 
 <script setup lang="ts">

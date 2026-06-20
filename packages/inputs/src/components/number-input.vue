@@ -1,5 +1,10 @@
 <template>
-    <text-input ref="element" v-bind="$props" :filters="adjustedFilters" :modifiers="adjustedModifiers" />
+    <text-input
+        ref="element"
+        v-bind="$props"
+        :filters="adjustedFilters"
+        :modifiers="adjustedModifiers"
+    />
 </template>
 
 <script setup lang="ts">
@@ -35,7 +40,9 @@ const adjustedFilters = computed<Filter[]>(() =>
     [new RegExp(`[0-9${allowedCharacters}]`, 'g'), filterPresets<Filter>(filters)].flat()
 );
 
-const adjustedModifiers = computed<TransformFunction[]>(() => filterPresets<TransformFunction>(modifiers).flat());
+const adjustedModifiers = computed<TransformFunction[]>(() =>
+    filterPresets<TransformFunction>(modifiers).flat()
+);
 
 defineExpose({
     focus: () => element.value?.focus(),

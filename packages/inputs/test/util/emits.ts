@@ -1,5 +1,5 @@
 import { VueWrapper } from '@vue/test-utils';
-import { expect } from 'vitest';
+import { expect } from 'vite-plus/test';
 
 export function emittedNativeEvents<T extends Event>(
     wrapper: VueWrapper<unknown>,
@@ -48,7 +48,9 @@ export function emittedCustomEvents(
         return null;
     }
 
-    const emittedValues = emitted.flatMap((emits) => (Array.isArray(emits) && emits.length === 0 ? true : emits));
+    const emittedValues = emitted.flatMap((emits) =>
+        Array.isArray(emits) && emits.length === 0 ? true : emits
+    );
     expect(emittedValues).toBeTruthy();
     expect(emittedValues.length).toBe(count);
 

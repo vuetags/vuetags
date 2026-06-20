@@ -22,7 +22,8 @@ import { computed, useTemplateRef } from 'vue';
 type RadioValidationFunction = ValidationFunction<string | unknown>;
 type ValidatableProp = { validators?: MaybeArray<ValidationPresets | RadioValidationFunction> };
 
-type Props = Omit</* @vue-ignore */ InputHTMLAttributes, 'type'> & ValidatableProp & { value?: string | unknown };
+type Props = Omit</* @vue-ignore */ InputHTMLAttributes, 'type'> &
+    ValidatableProp & { value?: string | unknown };
 
 const { value, validators = [] } = defineProps<Props>();
 

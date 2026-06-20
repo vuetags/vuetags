@@ -1,8 +1,8 @@
 import { DOMWrapper, VueWrapper } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
-import { Component, DefineComponent } from 'vue';
+import { describe, expect, it, vi } from 'vite-plus/test';
+import type { Component, DefineComponent } from 'vue';
 import { emittedNativeEvents } from './util/emits';
-import { InputElement, mountComponent } from './util/mount';
+import { type InputElement, mountComponent } from './util/mount';
 
 type FocusableComponent = DefineComponent<{
     focus: () => void | undefined;
@@ -13,7 +13,11 @@ type FocusableComponentWrapper = VueWrapper<FocusableComponent>;
 
 type InputWrapper = DOMWrapper<InputElement>;
 
-export function testFocus(component: Component, selector: string, props: Record<string, unknown> = {}) {
+export function testFocus(
+    component: Component,
+    selector: string,
+    props: Record<string, unknown> = {}
+) {
     return describe('Focusing/blurring components', () => {
         it('should focus natively', async () => {
             const { wrapper, input } = mountComponent(component, selector, props);
@@ -37,7 +41,11 @@ export function testFocus(component: Component, selector: string, props: Record<
     });
 }
 
-export function testRefocus(component: Component, selector: string, props: Record<string, unknown> = {}) {
+export function testRefocus(
+    component: Component,
+    selector: string,
+    props: Record<string, unknown> = {}
+) {
     return describe('Focusing/blurring components', () => {
         it('should keep focus when focusing quickly after blurring', async () => {
             const { wrapper, input } = mountComponent(component, selector, props);
@@ -46,7 +54,10 @@ export function testRefocus(component: Component, selector: string, props: Recor
     });
 }
 
-async function testFocusNative(wrapper: FocusableComponentWrapper, input: InputWrapper): Promise<void> {
+async function testFocusNative(
+    wrapper: FocusableComponentWrapper,
+    input: InputWrapper
+): Promise<void> {
     await isNotFocused(wrapper, input);
 
     input.element.focus();
@@ -55,7 +66,10 @@ async function testFocusNative(wrapper: FocusableComponentWrapper, input: InputW
     emittedFocusEvent(wrapper);
 }
 
-async function testFocusFunction(wrapper: FocusableComponentWrapper, input: InputWrapper): Promise<void> {
+async function testFocusFunction(
+    wrapper: FocusableComponentWrapper,
+    input: InputWrapper
+): Promise<void> {
     await isNotFocused(wrapper, input);
 
     wrapper.vm.focus();
@@ -64,7 +78,10 @@ async function testFocusFunction(wrapper: FocusableComponentWrapper, input: Inpu
     emittedFocusEvent(wrapper);
 }
 
-async function testBlurNative(wrapper: FocusableComponentWrapper, input: InputWrapper): Promise<void> {
+async function testBlurNative(
+    wrapper: FocusableComponentWrapper,
+    input: InputWrapper
+): Promise<void> {
     vi.useFakeTimers();
 
     await isNotFocused(wrapper, input);
@@ -85,7 +102,10 @@ async function testBlurNative(wrapper: FocusableComponentWrapper, input: InputWr
     vi.useRealTimers();
 }
 
-async function testBlurFunction(wrapper: FocusableComponentWrapper, input: InputWrapper): Promise<void> {
+async function testBlurFunction(
+    wrapper: FocusableComponentWrapper,
+    input: InputWrapper
+): Promise<void> {
     vi.useFakeTimers();
 
     await isNotFocused(wrapper, input);
@@ -105,7 +125,10 @@ async function testBlurFunction(wrapper: FocusableComponentWrapper, input: Input
     vi.useRealTimers();
 }
 
-async function testRefocusFunction(wrapper: FocusableComponentWrapper, input: InputWrapper): Promise<void> {
+async function testRefocusFunction(
+    wrapper: FocusableComponentWrapper,
+    input: InputWrapper
+): Promise<void> {
     vi.useFakeTimers();
 
     await isNotFocused(wrapper, input);
@@ -147,7 +170,10 @@ async function isFocused(wrapper: FocusableComponentWrapper, input: InputWrapper
     expect(input.classes()).toContain('focused');
 }
 
-async function isNotFocused(wrapper: FocusableComponentWrapper, input: InputWrapper): Promise<void> {
+async function isNotFocused(
+    wrapper: FocusableComponentWrapper,
+    input: InputWrapper
+): Promise<void> {
     expect(input.element).not.toBe(document.activeElement);
 
     await wrapper.vm.$nextTick();

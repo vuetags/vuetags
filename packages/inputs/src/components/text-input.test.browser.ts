@@ -1,7 +1,7 @@
 import TextInput from '@/components/text-input.vue';
-import { page, userEvent } from '@vitest/browser/context';
 import { mount, VueWrapper } from '@vue/test-utils';
-import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { beforeAll, beforeEach, describe, expect, it } from 'vite-plus/test';
+import { page, userEvent } from 'vite-plus/test/browser';
 
 let wrapper: VueWrapper;
 
@@ -22,6 +22,9 @@ describe('Filtering keys', () => {
         await expect.element(input).toHaveFocus();
 
         await userEvent.keyboard('abc123def');
+        expect(input.element().classList.contains('focused')).toBe(true);
+        expect(input.element().classList.contains('focused')).toBe(true);
+
         await expect.element(input).toHaveValue('abcdef');
         await expect.element(input).toHaveDisplayValue('abcdef');
     });

@@ -1,4 +1,4 @@
-import { App } from 'vue';
+import type { App } from 'vue';
 
 /**
  * Base components
@@ -36,8 +36,8 @@ export default {
         app.component('FileInput', FileInput);
         app.component('NumberInput', NumberInput);
         app.component('PasswordInput', PasswordInput);
-        app.component('TextInput', TextInput);
-        app.component('TextArea', TextArea);
         app.component('RadioInput', RadioInput);
+        app.component('TextArea', TextArea);
+        app.component('TextInput', TextInput);
     }
 };

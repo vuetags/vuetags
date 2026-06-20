@@ -14,7 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import type { FocusableEmits, MaybeArray, TransformableInputProps, ValidationResult } from '@/components/types';
+import type {
+    FocusableEmits,
+    MaybeArray,
+    TransformableInputProps,
+    ValidationResult
+} from '@/components/types';
 import { useFocusable } from '@/composables/focus';
 import { toArray } from '@/util/arrays';
 import type { ModifierPreset, TransformFunction } from '@/util/model';
@@ -29,7 +34,9 @@ type TextInputProps = /* @vue-ignore */ InputHTMLAttributes;
 type TextAreaProps = /* @vue-ignore */ TextareaHTMLAttributes;
 type ValidatableProp = { validators?: MaybeArray<ValidationPresets | ValidationFunction<string>> };
 
-type Props = (TextInputProps | TextAreaProps) & TransformableInputProps & ValidatableProp & { textarea?: boolean };
+type Props = (TextInputProps | TextAreaProps) &
+    TransformableInputProps &
+    ValidatableProp & { textarea?: boolean };
 
 const { filters = [], modifiers = [], validators = [] } = defineProps<Props>();
 
@@ -43,7 +50,8 @@ const emit = defineEmits<FocusableEmits>();
  * - v-model.lowercase="model" : Automatically lowercases the value.
  */
 const [model, modelModifiers] = defineModel<string, ModifierPreset>({
-    set: (value: string): string => transform(value, ...filterFunctions.value, ...modifierFunctions.value)
+    set: (value: string): string =>
+        transform(value, ...filterFunctions.value, ...modifierFunctions.value)
 });
 
 const element = useTemplateRef<HTMLInputElement>('element');
@@ -55,7 +63,9 @@ const element = useTemplateRef<HTMLInputElement>('element');
  */
 const nativeModifiers = computed<Record<string, true | undefined>>(() =>
     Object.fromEntries(
-        Object.entries(modelModifiers).filter((modifier) => !ModifierPresets.includes(modifier[0] as ModifierPreset))
+        Object.entries(modelModifiers).filter(
+            (modifier) => !ModifierPresets.includes(modifier[0] as ModifierPreset)
+        )
     )
 );
 
@@ -79,7 +89,9 @@ const required = (modelValue: string): boolean => !!modelValue && modelValue.tri
 /**
  * Reactive list of validators to execute when the model is changed.
  */
-const validatorFunctions = computed<ValidationFunction[]>(() => replaceRequiredPreset(toArray(validators), required));
+const validatorFunctions = computed<ValidationFunction[]>(() =>
+    replaceRequiredPreset(toArray(validators), required)
+);
 
 /**
  * Set the model value on input.

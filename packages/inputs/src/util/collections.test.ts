@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import { add, has, remove } from './collections';
+import { add, has, remove } from '@/util/collections';
+import { describe, expect, it } from 'vite-plus/test';
 
 describe('Adding to string collections', () => {
     describe('Arrays', () => {
@@ -32,7 +32,9 @@ describe('Adding to string collections', () => {
         it('should not add existing values', async () => {
             expect(add('foo', new Set(['foo']))).toEqual(new Set(['foo']));
             expect(add('bar', new Set(['foo', 'bar']))).toEqual(new Set(['foo', 'bar']));
-            expect(add('baz', new Set(['foo', 'bar', 'baz']))).toEqual(new Set(['foo', 'bar', 'baz']));
+            expect(add('baz', new Set(['foo', 'bar', 'baz']))).toEqual(
+                new Set(['foo', 'bar', 'baz'])
+            );
         });
 
         it('should not add incorrect values', async () => {

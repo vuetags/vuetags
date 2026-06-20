@@ -3,7 +3,7 @@ import { testFocus, testRefocus } from '@test/focus';
 import { mountComponent } from '@test/util/mount';
 import { DOMWrapper, mount } from '@vue/test-utils';
 import { File } from 'happy-dom';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vite-plus/test';
 
 const defaultProps = {
     name: 'testing-text-input'
