@@ -12,7 +12,7 @@ export default defineConfig({
         plugins: [Vue({ isProduction: true })],
         dts: { vue: true },
         deps: { neverBundle: ['vue', '@vueuse/core'] },
-        copy: ['README.md', 'CHANGELOG.md', { from: '../../LICENSE', to: 'dist/' }]
+        copy: ['README.md', 'CHANGELOG.md', 'package.json', { from: '../../LICENSE', to: 'dist/' }]
     },
     test: {
         alias: {
