@@ -29,6 +29,7 @@
         "@types/node": "^26.0.0",
         "@typescript/native-preview": "^7.0.0-dev.20260620.1",
         "@vitejs/plugin-vue": "^6.0.7",
+        "@vitest/browser-playwright": "catalog:",
         "@vitest/coverage-v8": "^4.1.9",
         "@vue/test-utils": "^2.4.11",
         "@vueuse/core": "^14.3.0",
@@ -44,8 +45,15 @@
         "vue": "^3.5.38",
         "vue-tsc": "^3.3.5"
     },
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "11.9.0",
+            "onFail": "download"
+        }
+    },
     "engines": {
         "node": ">=22.12.0"
     },
-    "packageManager": "pnpm@10.32.1"
+    "packageManager": "pnpm@11.9.0"
 }
