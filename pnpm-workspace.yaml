@@ -1,23 +1,26 @@
 packages:
-  - apps/*
-  - packages/*
-  - tools/*
-
-catalogMode: prefer
+    - apps/*
+    - packages/*
+    - tools/*
 
 catalog:
-  "@types/node": ^24
-  typescript: ^5
-  vite: npm:@voidzero-dev/vite-plus-core@latest
-  vitest: npm:@voidzero-dev/vite-plus-test@latest
-  vite-plus: latest
+    '@types/node': ^24
+    '@vitest/browser-playwright': ^4.1.9
+    oxc-minify: ^0.137.0
+    typescript: ^5
+    vite: npm:@voidzero-dev/vite-plus-core@latest
+    vite-plus: latest
+    vitepress: 2.0.0-alpha.17
+    vitest: 4.1.9
+
+catalogMode: prefer
 overrides:
-  vite: "catalog:"
-  vitest: "catalog:"
+    vite: 'catalog:'
+    vitest: 'catalog:'
 peerDependencyRules:
-  allowAny:
-    - vite
-    - vitest
-  allowedVersions:
-    vite: "*"
-    vitest: "*"
+    allowAny:
+        - vite
+        - vitest
+    allowedVersions:
+        vite: '*'
+        vitest: '*'

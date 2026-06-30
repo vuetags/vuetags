@@ -1,0 +1,19 @@
+{
+    "name": "@vuetags/documentation",
+    "version": "0.0.1",
+    "private": "true",
+    "homepage": "https://vuetags.dev",
+    "bugs": {
+        "url": "https://github.com/vuetags/vuetags/issues"
+    },
+    "license": "MIT",
+    "author": "Michael Verschoof <michael.verschoof@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vuetags/vuetags.git"
+    },
+    "type": "module",
+    "dependencies": {
+        "@vuetags/inputs": "0.1.2"
+    }
+}
