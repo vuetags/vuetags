@@ -16,21 +16,24 @@
         "test:unit": "clear && vitest run --project unit",
         "test:browser": "clear && vitest run --project browser",
         "// ---------- Packages / Inputs ---------- ": "",
-        "inputs:build": "npm --prefix ./packages/inputs/ run build",
-        "inputs:test": "npm --prefix ./packages/inputs/ run test:coverage",
-        "input:release": "npm --prefix ./packages/inputs/ run release",
+        "build": "pnpm --prefix ./packages/inputs/ run build",
+        "inputs:build": "pnpm --prefix ./packages/inputs/ run build",
+        "inputs:test": "pnpm --prefix ./packages/inputs/ run test:coverage",
+        "input:release": "pnpm --prefix ./packages/inputs/ run release",
         "// ---------- Documentation ---------- ": "",
         "docs": "vitepress dev apps/documentation",
         "docs:dev": "vitepress dev apps/documentation",
         "docs:build": "vitepress build apps/documentation",
-        "docs:preview": "vitepress preview apps/documentation"
+        "docs:preview": "vitepress preview apps/documentation",
+        "// ---------- Playground ---------- ": "",
+        "dev": "pnpm  --prefix ./apps/playground/ run dev"
     },
     "devDependencies": {
-        "@types/node": "^26.0.0",
+        "@types/node": "catalog:",
         "@typescript/native-preview": "^7.0.0-dev.20260620.1",
-        "@vitejs/plugin-vue": "^6.0.7",
+        "@vitejs/plugin-vue": "catalog:",
         "@vitest/browser-playwright": "catalog:",
-        "@vitest/coverage-v8": "^4.1.9",
+        "@vitest/coverage-v8": "catalog:",
         "@vue/test-utils": "^2.4.11",
         "@vueuse/core": "^14.3.0",
         "bumpp": "^11.1.0",
@@ -38,13 +41,13 @@
         "jsdom": "^29.1.1",
         "oxc-minify": "catalog:",
         "playwright": "^1.61.0",
-        "typescript": "^5.0.0",
+        "typescript": "catalog:",
         "unplugin-vue": "^7.2.0",
         "vite-plus": "catalog:",
         "vitepress": "catalog:",
         "vitest": "catalog:",
-        "vue": "^3.5.38",
-        "vue-tsc": "^3.3.5"
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
     },
     "devEngines": {
         "packageManager": {

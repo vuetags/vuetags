@@ -8,17 +8,15 @@
         "build": "vue-tsc -b && vp build",
         "preview": "vp preview"
     },
-    "dependencies": {
-        "@vuetags/inputs": "workspace:*",
-        "vue": "^3.5.32"
-    },
     "devDependencies": {
-        "@types/node": "^24.12.2",
-        "@vitejs/plugin-vue": "^6.0.5",
+        "@types/node": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "^0.9.1",
-        "typescript": "~6.0.2",
+        "@vuetags/inputs": "link:../../packages/inputs",
+        "typescript": "catalog:",
         "vite": "catalog:",
         "vite-plus": "catalog:",
-        "vue-tsc": "^3.2.6"
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
     }
 }
