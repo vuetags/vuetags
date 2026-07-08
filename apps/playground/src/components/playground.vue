@@ -2,6 +2,8 @@
 import heroImg from '../assets/hero.png';
 import viteLogo from '../assets/vite.svg';
 import vueLogo from '../assets/vue.svg';
+
+import { TextInput } from '@vuetags/inputs';
 </script>
 
 <template>
@@ -16,5 +18,18 @@ import vueLogo from '../assets/vue.svg';
         <p>Testing package implementations and other experiments.</p>
     </header>
 
-    <main></main>
+    <main>
+        <form>
+            <text-input required />
+            <button>Submit</button>
+        </form>
+    </main>
 </template>
+
+<style lang="css" scoped>
+form {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+</style>

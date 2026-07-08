@@ -1,5 +1,5 @@
 {
-    "name": "playground",
+    "name": "@vuetags/playground",
     "version": "0.0.0",
     "private": true,
     "type": "module",
@@ -9,13 +9,13 @@
         "preview": "vp preview"
     },
     "dependencies": {
+        "@vuetags/inputs": "workspace:*",
         "vue": "^3.5.32"
     },
     "devDependencies": {
         "@types/node": "^24.12.2",
         "@vitejs/plugin-vue": "^6.0.5",
         "@vue/tsconfig": "^0.9.1",
-        "@vuetags/inputs": "workspace:*",
         "typescript": "~6.0.2",
         "vite": "catalog:",
         "vite-plus": "catalog:",
