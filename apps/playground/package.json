@@ -1,0 +1,22 @@
+{
+    "name": "@vuetags/playground",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vp dev",
+        "build": "vue-tsc -b && vp build",
+        "preview": "vp preview"
+    },
+    "devDependencies": {
+        "@types/node": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
+        "@vue/tsconfig": "^0.9.1",
+        "@vuetags/inputs": "link:../../packages/inputs",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plus": "catalog:",
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
+    }
+}
