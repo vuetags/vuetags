@@ -1,0 +1,17 @@
+<svg viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+    <!-- Angle bracket (opening) -->
+    <text x="10" y="65" font-size="90" class="character">&lt;</text>
+
+    <!-- Forward slash -->
+    <text x="70" y="65" font-size="80" class="character">/</text>
+
+    <!-- Angle bracket (closing) -->
+    <text x="100" y="65" font-size="90" class="character">&gt;</text>
+
+    <style>
+        svg .character {
+            fill: #d400ff;
+            font-family: "FantasqueSansM Nerd Font";
+        }
+    </style>
+</svg>
