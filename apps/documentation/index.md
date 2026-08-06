@@ -4,8 +4,11 @@ layout: home
 
 hero:
     name: VueTags
-    text: Like HTML tags, but better
+    text: Like HTML, but better
     tagline: Simple, Type Safe and Extensible. The feel of using native HTML tags but with more functionality.
+    image:
+        src: /logo-blue.svg
+        alt: VueTags
     actions:
         - theme: brand
           text: Get started

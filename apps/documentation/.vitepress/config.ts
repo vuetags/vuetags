@@ -4,7 +4,12 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
     title: 'VueTags',
     description: 'HTML elements, but better',
+
+    head: [['link', { rel: 'icon', href: '/logo-blue.svg' }]],
+
     themeConfig: {
+        logo: '/logo.svg',
+
         search: {
             provider: 'local'
         },

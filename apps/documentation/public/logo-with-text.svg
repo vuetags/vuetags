@@ -1,0 +1,29 @@
+<svg viewBox="0 0 390 80" xmlns="http://www.w3.org/2000/svg">
+    <!-- Angle bracket (opening) -->
+    <text x="10" y="65" font-size="90" class="character">&lt;</text>
+
+    <!-- VueTags text -->
+    <text x="60" y="63" font-size="60" class="text">VueTags</text>
+
+    <!-- Forward slash -->
+    <text x="300" y="65" font-size="80" class="character">/</text>
+
+    <!-- Angle bracket (closing) -->
+    <text x="330" y="65" font-size="90" class="character">&gt;</text>
+
+    <style>
+        svg {
+        }
+
+        svg .character {
+            fill: #d400ff;
+            font-family: "FantasqueSansM Nerd Font";
+        }
+
+        svg .text {
+            fill: #ffffff;
+            font-family: "Noto sans";
+            font-weight: 300;
+        }
+    </style>
+</svg>
